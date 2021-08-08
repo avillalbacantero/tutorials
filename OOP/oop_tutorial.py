@@ -107,7 +107,7 @@ class Dog(Animal):
         )
 
     # Let's write now a static method. This is a function that does not
-    # depend neither in the class nor the object instance but it's useful
+    # depend neither on the class nor the object instance but it's useful
     # to have it inside the class to mantain a good code organization.
     @staticmethod  # we use this decorator to define a static method
     def speak_some_times(n_times: int) -> None:  # here we don't pass 'self'
