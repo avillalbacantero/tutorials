@@ -6,7 +6,7 @@ class Animal(object):  # every class is a child of the object class
 
     # First we need the constructor method
     # The first argument is always a 'self'.
-    def __init__(self, name: str, age: int, owner: str) -> None:
+    def __init__(self, name: str, age: int, owner: Person) -> None:
         # Everytime we create a new instance of the class, this method
         # will be executed
 
@@ -16,7 +16,12 @@ class Animal(object):  # every class is a child of the object class
         # class.
         self.name = name
         self.age = age
-        self.owner = owner
+        self.owner = owner  # Animal is composed by a unique Person owner
+
+        # We add the new family member to the owner
+        # Note that self can be an instance of Animal, Dog or Cat since
+        # Dog and Cat are childs of the Animal class.
+        self.owner.add_animal(self)
 
     # Now we are going to define some methods, which are like functions
     # but they are associated with an object as well
@@ -28,7 +33,9 @@ class Animal(object):  # every class is a child of the object class
     def __str__(self) -> str:
         # For example, this method returns a nice string representation
         # of the class.
-        return f"Name: {self.name} - Age: {self.age} " f"- Owner: {self.owner}"
+        return (
+            f"Name: {self.name} - Age: {self.age} - Owner: {self.owner.name}"
+        )
 
     # We can overload complex methods as well. For example, let's say
     # that for us adding two animal means they have a child
@@ -36,7 +43,7 @@ class Animal(object):  # every class is a child of the object class
         return Animal(
             f"The child of {self.name} and {other_animal.name}",
             0,
-            f"{self.owner} and {other_animal.owner}",
+            self.owner,  # suppose the owner comes from the current instance
         )
 
     # Let's overload some more methods. These are for comparing animals,
@@ -63,15 +70,15 @@ class Animal(object):  # every class is a child of the object class
 class Dog(Animal):
 
     # Here we are going to define some class attributes. These attributes
-    # belong to the class, not to the object instance, but they are shared
-    # across all the class instances.
+    # belong to the class, not to the object instance, but they are
+    # shared across all the class instances.
     SOUND = "Bark!"  # for example, the sound of a Dog is 'Bark!'
     all_dogs = []  # we can have lists of the created instances too
 
     # Now we are creating the constructor. To do this, we have to call
     # the parent class constructor
     def __init__(
-        self, name: str, age: int, owner: str, pedigree: bool
+        self, name: str, age: int, owner: Person, pedigree: bool
     ) -> None:
         # We call the parent class (known as superclass) constructor
         # super() is a reference to the parent class.
@@ -80,7 +87,7 @@ class Dog(Animal):
         # as well
         self.pedigree = pedigree
         # And we can override attributes from the parent class too
-        self.owner = f"{owner} / Dog Owner"
+        # self.owner = f"{owner} / Dog Owner"
 
         # As a new instance has been created, we append it to the list
         Dog.all_dogs.append(self)
@@ -102,20 +109,18 @@ class Dog(Animal):
         return Dog(
             f"The child of {self.name} and {other_dog.name}",
             0,
-            f"{self.owner} and {other_dog.owner}",
+            self.owner,
             self.pedigree and other_dog.pedigree,
         )
 
     # Let's write now a static method. This is a function that does not
-    # depend neither on the class nor the object instance but it's useful
+    # depend neither in the class nor the object instance but it's useful
     # to have it inside the class to mantain a good code organization.
     @staticmethod  # we use this decorator to define a static method
     def speak_some_times(n_times: int) -> None:  # here we don't pass 'self'
-        # So we cannot use 'self' inside this function. See the speak()
-        # method as well: actually, we are not using any object
-        # attribute nor method; that indicates it could be static too.
+        # So we cannot use 'self' inside this function.
         for _ in range(n_times):
-            print(Dog.SOUND)
+            print("Say something")
 
     # Now, let's create a class method. This method is referred to the
     # class itself, not to any instance.
@@ -131,9 +136,9 @@ class Cat(Animal):
     SOUND = "Meow!"
     all_cats = []
 
-    def __init__(self, name: str, age: int, owner: str) -> None:
+    def __init__(self, name: str, age: int, owner: Person) -> None:
         super().__init__(name, age, owner)
-        self.owner = f"{owner} / Cat Owner"
+        # self.owner = f"{owner} / Cat Owner"
         Cat.all_cats.append(self)
 
     # Now, we are going to write a custom method for the child class
@@ -144,14 +149,97 @@ class Cat(Animal):
     def say_hello(self) -> None:
         print(f"Hi! My name is {self.name} and I'm a cat! :)")
 
+    def __add__(self, other_cat: Cat) -> Cat:
+        return Cat(
+            f"The child of {self.name} and {other_cat.name}",
+            0,
+            self.owner,  # suppose the owner comes from the current instance
+        )
+
     @staticmethod
     def speak_some_times(n_times: int) -> None:
         for _ in range(n_times):
-            print(Cat.SOUND)
+            print("Say something")
 
     @classmethod
     def num_cats(cls) -> int:
         return len(cls.all_cats)
+
+
+# Let's define the Person class, which is a component of the Animal
+# class, i.e. an Animal 'has a' Person owner.
+# However, at the same time the class Person is the composite of the
+# component Animal, which means a Person 'has one or more' Animal.
+# instances. This is a case of bidirectional composition.
+class Person(object):
+    def __init__(
+        self,
+        name: str,
+        age: int,
+        sex: str,
+        country: str,
+        profession: str,
+        animal_family: list[Animal],
+    ) -> None:
+
+        self.name = name
+        self.age = age
+        self.sex = sex
+        self.country = country
+        self.profession = profession
+        self.animal_family = (
+            animal_family  # a person can have more than 1 animal
+        )
+
+    def add_animal(self, new_animal_member: Animal) -> None:
+        self.animal_family.append(new_animal_member)
+
+    def get_num_animals(self) -> int:
+        return len(self.animal_family)
+
+
+# Let's play with multi-inheritance. That means that a class can be
+# derived from more than one another class. We are gonna create a class
+# called University.
+class University(object):
+    def __init__(self, institution_name: str, city: str) -> None:
+        self.institution_name = institution_name
+        self.city = city
+
+
+# And now we are going to create another class called Student which
+# derives from both Person and University classes.
+class Student(Person, University):
+    def __init__(
+        self,
+        name: str,
+        age: int,
+        sex: str,
+        country: str,
+        profession: str,
+        animal_family: list[Animal],
+        institution_name: str,
+        city: str,
+        degree: str,
+    ) -> None:
+
+        # Here, if we call super() it will refer to the Person class,
+        # since it is the first one that appears where we have defined
+        # the new Student class. However, we need to be able to refer to
+        # the University class as well, so in this case we can call the
+        # constructors of each of these classes like:
+        Person.__init__(
+            self, name, age, sex, country, profession, animal_family
+        )  # note the 'self' parameter here
+        University.__init__(self, institution_name, city)
+        self.degree = degree
+
+    # Add some new functionality for complete the example
+    def study(self) -> None:
+        print(f"{self.name} studies {self.degree} at {self.institution_name}.")
+
+
+########################################################################
 
 
 # Animal, Dog and Cat and not-private classes. Let's say that for some
@@ -165,8 +253,8 @@ class _PrivateClass(object):
     pass
 
 
-# Let's create another class but this time it will be not private, as with
-# Animal Dog and Cat. Public classes can be accessed from anywhere.
+# Let's create another class but this time it will be not private, as
+# with Animal Dog and Cat. Public classes can be accessed from anywhere.
 class NotPrivateClass(object):
 
     # Let's declare a public method for this class
@@ -177,6 +265,8 @@ class NotPrivateClass(object):
     def _private_foo(self) -> None:
         print("I'm privated, sorry.")
 
+
+########################################################################
 
 if __name__ == "__main__":
 
@@ -190,27 +280,35 @@ if __name__ == "__main__":
     # Each class has its own methods
     print(y.upper())
     # And this command can help you to visualize those methods
-    print(help(str))
+    # print(help(str))
 
     # We can use custom classes in the same way.
+    # Let's start by creating some people
+    cristina = Person("Cristina", 26, "F", "Spain", "Social worker", [])
+    ana = Person("Ana", 26, "F", "Spain", "Engineer", [])
+
     # Let's create an instance of the object Animal
     # Here we are creating an Animal object with some attributes
-    sira = Animal("Sira", 6, "Cristina")
+    sira = Animal("Sira", 6, cristina)
     sira.say_hello()
     print(sira.name)  # we can access the object attributes like that
 
     # Another one
-    casper = Animal("Casper", 5, "Ana")
+    casper = Animal("Casper", 5, ana)
     casper.say_hello()
 
     # Ok, now let's do them speak
     # However, one animal is a dog and one animal is a cat, so they'll
     # speak differently. We use class inheritance for that.
-    sira = Dog("Sira", 6, "Cristina", True)
+
+    cristina.animal_family.clear()  # let's reinitialize the family
+    ana.animal_family.clear()
+
+    sira = Dog("Sira", 6, cristina, True)
     sira.say_hello()
     sira.speak()
 
-    casper = Cat("Casper", 5, "Ana")
+    casper = Cat("Casper", 5, ana)
     casper.say_hello()
     casper.speak()
 
@@ -225,14 +323,27 @@ if __name__ == "__main__":
     # an overrided __str__ method
     print(str(casper))
 
+    # Let's print some info of the owner of the cat for example
+    print(f"Name: {casper.owner.name}")
+    print(f"Country: {casper.owner.country}")
+    print(f"Profession: {casper.owner.profession}")
+
     # Let's say now Sira meets another dog and they have a puppy
-    rex = Dog("Rex", 6, "Ana", True)
+    rex = Dog("Rex", 6, ana, True)
     rex.say_hello()
     puppy = sira + rex  # this calls the __add__ method
     puppy.say_hello()
     puppy.speak()
     print(type(puppy))  # the puppy is a Dog as well
     print(f"Puppy pedigree: {puppy.pedigree}")  # and it's pedigree
+    print(f"Puppy's owner: {puppy.owner.name}")  # same owner as sira
+
+    # Now ana has two animals, one cat and one dog
+    print(f"Ana has: {ana.get_num_animals()} animals")
+    print(f"Ana's animals: {ana.animal_family}")
+    # And cristina has two dogs
+    print(f"Cristina has: {cristina.get_num_animals()} animals")
+    print(f"Cristina's animals: {cristina.animal_family}")
 
     # We can compare the animals ages as well
     print(rex > casper)  # this calls the __gt__ method
@@ -252,6 +363,26 @@ if __name__ == "__main__":
     print(f"There are: {Dog.num_dogs()} dogs right now.")
     # And how many cats
     print(f"There are: {Cat.num_cats()} cats right now.")
+
+    # Let's review a bit the multi-inheritance. We are gonna create a
+    # student
+    marta = Student(
+        "Marta",
+        21,
+        "F",
+        "Spain",
+        "Student",
+        casper,
+        "UPM",
+        "Madrid",
+        "Physics",
+    )
+    # Let's see how we can access to both Person and University information
+    print(marta.name)
+    print(marta.age)
+    print(marta.institution_name)
+    print(marta.degree)  # and to Student info too
+    marta.study()  # and we can make the student studying
 
     # Finally, let's look at public and private classes.
     # You can create an instance of a private class:
