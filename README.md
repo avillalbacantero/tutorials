@@ -5,10 +5,10 @@ Notebooks and tutorials about different Python topics I have studied during my #
 ## Current resources:
 
 ### Text Processing
-- Characters encoding tutorial (Jupyter Notebook): character_encodings_tutorial.ipynb (source: realpython.com)
+- Characters encoding tutorial (Jupyter Notebook): character_encodings_tutorial.ipynb (*source: realpython.com*)
 
 ### Testing
-- Pytest notes: ./pytest (source: realpython.com)
+- Pytest notes: ./pytest (*source: realpython.com*)
 
 ### Object Oriented Programming
-- Python OOP tutorial (notes): ./OOP (source: realpython.com)
+- Python OOP tutorial (notes): ./OOP (*source: realpython.com*)
