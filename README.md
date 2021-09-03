@@ -14,4 +14,4 @@ Notebooks and tutorials about different Python topics I have studied during my #
 - Python OOP tutorial (notes): ./OOP (*source: realpython.com*)
 
 ### Design Principles
-- SOLID principles (in Python): ./SOLID/solid_principles.ipynb
+- SOLID principles (in Python): ./SOLID/solid_principles.ipynb (*source: https://www.youtube.com/watch?v=2X50sKeBAcQ*)
