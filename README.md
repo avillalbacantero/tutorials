@@ -12,3 +12,6 @@ Notebooks and tutorials about different Python topics I have studied during my #
 
 ### Object Oriented Programming
 - Python OOP tutorial (notes): ./OOP (*source: realpython.com*)
+
+### Design Principles
+- SOLID principles (in Python): ./SOLID/solid_principles.ipynb
