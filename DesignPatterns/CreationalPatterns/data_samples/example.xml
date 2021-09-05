@@ -1,0 +1,12 @@
+<persons>
+    <person>
+        <name>Anna</name>
+        <age>26</age>
+        <country>Spain</country>
+    </person>
+    <person>
+        <name>Anna</name>
+        <age>26</age>
+        <country>Spain</country>
+    </person>
+</persons>
