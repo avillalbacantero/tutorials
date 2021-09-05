@@ -15,3 +15,6 @@ Notebooks and tutorials about different Python topics I have studied during my #
 
 ### Design Principles
 - SOLID principles (in Python): ./SOLID/solid_principles.ipynb (*source: https://www.youtube.com/watch?v=2X50sKeBAcQ*)
+
+### Design Patterns
+- Notebooks of each design patterns in: ./DesignPatterns (*source: Mainly the book 'Mastering Python Design Patterns' by Sakis Kasampalis)
