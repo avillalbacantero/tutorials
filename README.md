@@ -18,3 +18,6 @@ Notebooks and tutorials about different Python topics I have studied during my #
 
 ### Design Patterns
 - Notebooks of each design pattern in: ./DesignPatterns (*source: Mainly the Youtube channel BettaTech as well as the book 'Mastering Python Design Patterns' by Sakis Kasampalis*)
+
+### General Python topics
+- Notebok explaining map(), filter(), reduce() and lambas: map_filter_lambda_reduce.ipynb (*sources: Youtube channel Tech With Tim and realpython.com*)

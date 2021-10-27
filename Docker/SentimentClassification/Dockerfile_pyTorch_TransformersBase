@@ -1,0 +1,19 @@
+# Create a Transformers Pytorch based image
+FROM huggingface/transformers-pytorch-gpu:latest
+
+# Set working dir
+RUN mkdir -p /usr/src/sentiment_analysis 
+WORKDIR /usr/src/sentiment_analysis
+
+# Copy source code and models
+COPY classify.py /usr/src/sentiment_analysis
+RUN mkdir -p /usr/src/sentiment_analysis/models
+COPY models/distilbert-base-uncased-finetuned-sst-2-english /usr/src/sentiment_analysis/models/distilbert-base-uncased-finetuned-sst-2-english
+RUN mkdir -p /usr/src/sentiment_analysis/data
+
+# Set enviroment variables
+RUN mkdir /usr/src/sentiment_analysis/cache
+ENV TRANSFORMERS_CACHE=/usr/src/sentiment_analysis/cache
+
+# Configure entrypoint
+ENTRYPOINT ["python3", "classify.py"] 
