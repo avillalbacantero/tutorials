@@ -22,7 +22,8 @@ Notebooks and tutorials about different Python topics I have studied during my #
 
 ### Docker
 - A small project of sentiment classification using transformers with Dockerfiles: .\Docker\SentimentClassification. 
-Buildt images can be found on: https://hub.docker.com/repository/docker/villalbacanteroa/sentiment_classification & https://hub.docker.com/repository/docker/villalbacanteroa/sentiment_classification
+
+Built images can be found on: https://hub.docker.com/repository/docker/villalbacanteroa/sentiment_classification & https://hub.docker.com/repository/docker/villalbacanteroa/sentiment_classification
 
 ### General Python topics
 - Notebok explaining map(), filter(), reduce() and lambas: map_filter_lambda_reduce.ipynb (*sources: Youtube channel Tech With Tim and realpython.com*)
