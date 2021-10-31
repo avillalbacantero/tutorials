@@ -6,6 +6,7 @@ Notebooks and tutorials about different Python topics I have studied during my #
 
 ### Text Processing
 - Characters encoding tutorial (Jupyter Notebook): character_encodings_tutorial.ipynb (*source: realpython.com*)
+- Regex tutorial (Jupyter Notebook): regex.ipynb (*source: realpython.com*) (In progress)
 
 ### Testing
 - Pytest notes: ./pytest (*source: realpython.com*)
@@ -17,7 +18,11 @@ Notebooks and tutorials about different Python topics I have studied during my #
 - SOLID principles (in Python): ./SOLID/solid_principles.ipynb (*source: https://www.youtube.com/watch?v=2X50sKeBAcQ*)
 
 ### Design Patterns
-- Notebooks of each design pattern in: ./DesignPatterns (*source: Mainly the Youtube channel BettaTech as well as the book 'Mastering Python Design Patterns' by Sakis Kasampalis*)
+- Notebooks of each design pattern in: ./DesignPatterns (*source: Mainly the Youtube channel BettaTech)
+
+### Docker
+- A small project of sentiment classification using transformers with Dockerfiles: .\Docker\SentimentClassification. 
+Buildt images can be found on: https://hub.docker.com/repository/docker/villalbacanteroa/sentiment_classification & https://hub.docker.com/repository/docker/villalbacanteroa/sentiment_classification
 
 ### General Python topics
 - Notebok explaining map(), filter(), reduce() and lambas: map_filter_lambda_reduce.ipynb (*sources: Youtube channel Tech With Tim and realpython.com*)
