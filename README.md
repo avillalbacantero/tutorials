@@ -6,7 +6,7 @@ Notebooks and tutorials about different Python topics I have studied during my #
 
 ### Text Processing
 - Characters encoding tutorial (Jupyter Notebook): character_encodings_tutorial.ipynb (*source: realpython.com*)
-- Regex tutorial (Jupyter Notebook): regex.ipynb (*source: realpython.com*) (In progress)
+- Regex tutorial (Jupyter Notebook): regex.ipynb (*source: realpython.com*)
 
 ### Testing
 - Pytest notes: ./pytest (*source: realpython.com*)
