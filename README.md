@@ -27,3 +27,9 @@ Built images can be found on: https://hub.docker.com/repository/docker/villalbac
 
 ### General Python topics
 - Notebok explaining map(), filter(), reduce() and lambas: map_filter_lambda_reduce.ipynb (*sources: Youtube channel Tech With Tim and realpython.com*)
+- Notes about magic methods: magic_methods.py (*sources: Youtube channel Tech With Tim)
+- Notebook explaning metaclasses: metaclasses.ipynb (*sources: Youtube channel Tech With Tim)
+- Notebook explaning decorators: decorators.ipynb (*sources: Youtube channel Tech With Tim)
+- Notebook explaning generators: generators.ipynb (*sources: Youtube channel Tech With Tim)
+- Notebook explaning context managers: context_managers.ipynb (*sources: Youtube channel Tech With Tim)
+
