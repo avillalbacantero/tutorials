@@ -25,6 +25,12 @@ Notebooks and tutorials about different Python topics I have studied during my #
 
 Built images can be found on: https://hub.docker.com/repository/docker/villalbacanteroa/sentiment_classification & https://hub.docker.com/repository/docker/villalbacanteroa/sentiment_classification_tensorflow
 
+### MLOps
+- MLOps diagrams explaining different concepts
+
+#### TensorFlow
+- A set of tutorial based on its webpage (https://www.tensorflow.org/tutorials/)
+
 ### General Python topics
 - Notebok explaining map(), filter(), reduce() and lambas: map_filter_lambda_reduce.ipynb (*sources: Youtube channel Tech With Tim and realpython.com*)
 - Notes about magic methods: magic_methods.py (*sources: Youtube channel Tech With Tim)
