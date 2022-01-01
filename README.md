@@ -28,8 +28,11 @@ Built images can be found on: https://hub.docker.com/repository/docker/villalbac
 ### MLOps
 - MLOps diagrams explaining different concepts
 
-#### TensorFlow
+### TensorFlow
 - A set of tutorial based on its webpage (https://www.tensorflow.org/tutorials/)
+
+### Pandas
+- Notes and exercies for the Pandas tutorial on Kaggle Learn.
 
 ### General Python topics
 - Notebok explaining map(), filter(), reduce() and lambas: map_filter_lambda_reduce.ipynb (*sources: Youtube channel Tech With Tim and realpython.com*)
