@@ -27,9 +27,9 @@ Recommendation: Use the Git Bash to execute these commands.
 4. Push your commit to the remote repository: ```git push [remote repository alias] [remote branch]```. Example: ```git push [origin] [master]```. Set -u to set up an upstreaming. 
 5. Pull the change from the remote repository to your local repository: ```git pull [remote repository alias]```. 
 6. To link an existing local directory to a remote repository:
-6.1 Initialize the local directory as a git directory: ```git init```
-6.2 Link the local directory to the remote directory: ```git remote add [remote repository alias] [url.git]```
-6.3 (Optional) List the remote repositories: ```git remote -v```
+- Initialize the local directory as a git directory: ```git init```
+- Link the local directory to the remote directory: ```git remote add [remote repository alias] [url.git]```
+- (Optional) List the remote repositories: ```git remote -v```
 
 ## Branches
 On every project, there is going to exist a master branch. This is the main branch. 
@@ -42,6 +42,16 @@ The rest of the branches are temporaly. You create a new branch when, for exampl
 When you create a new branch from master, both contain the same code. 
 However, as you make and commit changes into the new branch, these are not going to be in master neither on other branches.
 You have to finish your changes and merge them into master/development. 
+Typically, each local branch has a remote branch with the same name.
+
+### Git Branches commands
+These are the most used commands when working with branches:
+1. To look at current branches: ```git branch```. Use -a to see remote branches too. The * sign says your current branch.
+2. To create and switch to a new branch: ```git checkout -b [branch name]```. Typically, names contain things like "feature" "bugfix" or the number of the issue they are solving. 
+3. To merge a branch into another: from the branch we are merging to, ```git merge [branch name being merged]```.
+4. To see the differences between two branches on CLI: ```git diff [branch name]```
+
+master/development usually are updated frequently, since more devs are merging their changes into them. To avoid merge conflicts, it is a good practice to pull master/development changes on your local repository and merge them into the feature/bug branch you are working on. If there are conflicts, you should fix them by hand.
 
 ## Common Git Workflows
 Typically, you will be doing:
