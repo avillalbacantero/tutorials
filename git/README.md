@@ -76,8 +76,6 @@ Often, more people will review your code (in a process called **code review**), 
  
  ![Opening a Pull Request in GitHub](https://david-estevez.gitbooks.io/the-git-the-bad-and-the-ugly/content/assets/github-pr-06.png)
 
- ![Merging a Pull Request in GitHub](https://i.stack.imgur.com/IhCVN.png)
-
 ## Common Git Workflows
 Typically, you will be doing:
 1. Create a new branch, typically from master or development.
