@@ -66,16 +66,16 @@ These are the most used commands when working with branches:
 
 ### Branching strategies
 Typically, you will have:
-- A main branch: long-term branch, it tracks differente stages of the development cycle. It usually contains the production code.
-- A development branch: long-term branch, it integrates short-term branches.
-- A feature branch: A short-term branch to add a new feature to the code.
-- A bug fix branch: A short-term branch that fix a particular bug.
-- A refactor branch: A short-term branch that refactor a piece of the code.
-- A experiment branch: A short-term branch that contains a particular experiment on the code.
+- A **main** branch: long-term branch, it tracks differente stages of the development cycle. It usually contains the production code.
+- A **development** branch: long-term branch, it integrates short-term branches.
+- A **feature** branch: A short-term branch to add a new feature to the code.
+- A **bug fix** branch: A short-term branch that fix a particular bug.
+- A **refactor** branch: A short-term branch that refactor a piece of the code.
+- A **experiment** branch: A short-term branch that contains a particular experiment on the code.
 
 Two examples of branching strategies are:
-1. GitHub flow: having a single, long-term main branch and continously add changes to it from short-term branch. It is very simple.
-2. Gitflow: we have a main branch containing production code, a development branch and short branches to add features, hot fixes and releases. The releases branches start from the development branch and they are merge into the main branch once they are ready to be in production. Typically, when merging into master we will add a tag. 
+1. **GitHub flow**: having a single, long-term main branch and continously add changes to it from short-term branch. It is very simple.
+2. **Gitflow**: we have a main branch containing production code, a development branch and short branches to add features, hot fixes and releases. The releases branches start from the development branch and they are merge into the main branch once they are ready to be in production. Typically, when merging into master we will add a tag. 
 
 ![Gitflow diagram](https://salesforcegraells.files.wordpress.com/2017/10/gitflow-workflow.jpg)
 
