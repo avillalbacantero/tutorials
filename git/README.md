@@ -33,6 +33,12 @@ Git stores all the commits and all the information in a hidden folder called `.g
   - Link the local directory to the remote directory: `git remote add [remote repository alias] [url.git]`
   - (Optional) List the remote repositories: `git remote -v`
 
+## The perfect commit
+A good commit should contain:
+- Specific changes from a single topic. Use `git add -p [file]` to select specific lines of code to track and add to the commit.
+- Clear and short subjects. 
+- The body must respond to the what, why and how questions.
+
 ## Branches
 On every project, there is going to exist a master branch. This is the main branch. 
 Also, it is common to have a development branch too. Both branches are permanent.
@@ -58,6 +64,23 @@ These are the most used commands when working with branches:
 6. To push the changes to a remote branch: (from the branch to push) `git push origin [branch name]`
 7. To delete a branch: `git branch -d [branch name]`
 
+### Branching strategies
+Typically, you will have:
+- A **main** branch: long-term branch, it tracks differente stages of the development cycle. It usually contains the production code.
+- A **development** branch: long-term branch, it integrates short-term branches.
+- A **feature** branch: A short-term branch to add a new feature to the code.
+- A **bug fix** branch: A short-term branch that fix a particular bug.
+- A **refactor** branch: A short-term branch that refactor a piece of the code.
+- A **experiment** branch: A short-term branch that contains a particular experiment on the code.
+
+Two examples of branching strategies are:
+1. **GitHub flow**: having a single, long-term main branch and continously add changes to it from short-term branch. It is very simple.
+2. **Gitflow**: we have a main branch containing production code, a development branch and short branches to add features, hot fixes and releases. The releases branches start from the development branch and they are merge into the main branch once they are ready to be in production. Typically, when merging into master we will add a tag. 
+
+![Gitflow diagram](https://salesforcegraells.files.wordpress.com/2017/10/gitflow-workflow.jpg)
+
+The selection of the most appropiate branching strategy depends entirely on the project, team and company you are working on. 
+
 ## Merging conflicts
 Sometimes two branches have edited the same piece of code. When merging, Git doesn't know what changes it must mantain or discard. So you will have to resolve these conflicts manually, either by selecting the one to keep or by manually editing the code to keep both. 
 
@@ -67,6 +90,11 @@ Sometimes two branches have edited the same piece of code. When merging, Git doe
 - (from the feature/bugfix branch) `git merge master`
 
 To solve the merge conflicts, we can use the CLI, GitHub or the code editor (which is the recommended option). 
+The section between HEAD and = represent the code on your current working branch, and the second one the code that we are trying to merge from.
+
+ ![Example of a merge conflict](https://i0.wp.com/css-tricks.com/wp-content/uploads/2021/10/conflict-in-textfile@2x.png?fit=1130%2C622&ssl=1)
+
+To abort a merge, you can do: `git merge --abort`.
 
 ## Pull Request
 A Pull Request (PR) is a request to merge your code to another branch, typically development or master. 
@@ -87,6 +115,28 @@ Typically, you will be doing:
 7. Once the PR is accepted and your changes are merged into master/development/another branch, you should delete the created branch.
 
  ![Typical Git Workflow](https://www.researchgate.net/profile/Mateus-Santos-19/publication/326295010/figure/fig1/AS:646795940069388@1531219577548/GitHub-Pull-request-flow.png)
+
+## Git Tags
+To tag means to give a name to a commit. We usually want to tag when adding new production code. 
+
+The software versioning usually comes in the form of **v.x.y.z**, where:
+- *x*: MAJOR version when you make incompatible API changes.
+- *y*: MINOR version when you add functionality in a backwards compatible manner
+- *z*: PATCH version when you make backwards compatible bug fixes of small changes.
+
+Relating to releases, we can work with:
+- **Alpha releases**: they have been testing by a set of users internal to the organization.
+- **Beta releases**: they have been testing by a set of users external to the organization.
+- **Product releases**: A releases which is ready to be used by any user.
+
+### Tagging commands
+1. To add a tag to the last commit: `git tag [tag_name]`
+2. To add a tag to the last commit with a message: `git tag -a [tag_name] -m "message"`
+3. To add a tag to a particupar commit: `git tag [tag_name] [commit hash]`
+4. To delete a tag: `git tag -d [tag_name]`
+5. To see information about a tag: `git show [tag_name]`
+6. To push your local tags to your remote repository: `git push --tags [repository]`. For example, `git push --tags origin`.
+7. (Reminder) To view commits and tags: `git log`
 
 ## Undoing in Git
 Git commits and changes to the code can the undone easily. 
