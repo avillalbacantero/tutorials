@@ -50,9 +50,9 @@ stages:
     params:
       params.yaml:
         train.min_split: 2
-        train.n_est: 50
+        train.n_est: 100
         train.seed: 20170428
     outs:
     - path: model.pkl
-      md5: d06b15b6838fbee027b49c132e30afae
-      size: 2658186
+      md5: 44df50dc843f9dabb9c6e84d1c145389
+      size: 5364261
