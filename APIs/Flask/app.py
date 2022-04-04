@@ -1,3 +1,4 @@
+from crypt import methods
 from datetime import datetime
 
 from flask import Flask, render_template
@@ -19,7 +20,7 @@ class Todo(db.Model):
         return f"<Task {self.id}>"
 
 # Create a index route for browing the URL
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def index():
     return render_template("index.html")
 
